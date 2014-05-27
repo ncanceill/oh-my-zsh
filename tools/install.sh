@@ -32,9 +32,9 @@ sed -i -e "/export PATH=/ c\\
 export PATH=\"$PATH\"
 " ~/.zshrc
 
-if [ "$SHELL" != "$(which zsh)" ]; then
+if [ "$SHELL" != "$(grep /zsh$ /etc/shells | tail -1)" ]; then
     echo "\033[0;34mTime to change your default shell to zsh!\033[0m"
-    chsh -s `which zsh`
+    chsh -s $(grep /zsh$ /etc/shells | tail -1)
 fi
 
 echo "\033[0;32m"'         __                                     __   '"\033[0m"
